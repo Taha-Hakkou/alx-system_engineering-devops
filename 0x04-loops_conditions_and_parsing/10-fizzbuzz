@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# displays numbers (1 to 100) in list format, replacing multiples of 3 w/ 'Fizz', ... 5 w/ 'Buzz' & ... 3 and 5 w/ 'FizzBuzz'
+for i in {1..100}; do
+	if [ $((i % 3)) = 0 ]; then
+		if [ $((i % 5)) = 0 ]; then
+			echo "FizzBuzz"
+		else
+			echo "Fizz"
+		fi
+	elif [ $((i % 5)) = 0 ]; then
+		echo "Buzz"
+	else
+		echo "$i"
+	fi
+done
