@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# creates a file, and handles current process signals
+remove_and_exit="rm /var/run/myscript.pid; exit"
+trap 'echo "I hate the kill command"; $remove_and_exit' SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
+trap '$remove_and_exit' SIGQUIT
+echo $$ > /var/run/myscript.pid
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
