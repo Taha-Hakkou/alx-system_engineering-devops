@@ -5,7 +5,7 @@ if [ $# != 1 ]; then
 else
 	case $1 in
 		'start')
-			sudo ./manage_my_process &
+			./manage_my_process &
 			echo "$$" > /var/run/my_process.pid
 			echo "manage_my_process started"
 			;;
@@ -17,7 +17,7 @@ else
 		'restart')
 			pkill -f ./manage_my_process
 			rm /var/run/my_process.pid
-			sudo ./manage_my_process &
+			./manage_my_process &
 			echo "$$" > /var/run/my_process.pid
 			echo "manage_my_process restarted"
 			;;
