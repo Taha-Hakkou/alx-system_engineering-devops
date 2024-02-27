@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# configures a new Ubuntu machine with Nginx listening ono port 80
+# configures a new Ubuntu machine with Nginx listening on port 80
 apt-get -y update
 apt-get -y install nginx
-#ufw allow 'Nginx HTTP'
+service nginx start
+ufw allow 'Nginx HTTP'
 chown -R $USER:$USER /var/www/html/index.nginx-debian.html
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
-service nginx start
+service nginx restart
