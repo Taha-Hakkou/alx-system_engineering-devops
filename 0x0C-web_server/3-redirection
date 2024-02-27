@@ -2,7 +2,7 @@
 # Configures Nginx server so that /redirect_me is redirecting to another page
 apt-get update
 apt-get install nginx -y
-echo "Hello World!" > /usr/share/nginx/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 redirect="http {\n
 	server {\n
 		listen        80;\n

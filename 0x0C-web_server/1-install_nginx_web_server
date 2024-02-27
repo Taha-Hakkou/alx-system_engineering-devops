@@ -2,5 +2,4 @@
 # configures a new Ubuntu machine with Nginx listening ono port 80
 apt-get update
 apt-get install nginx -y
-echo "Hello World!" > /usr/share/nginx/html/index.html
-nginx -s reload
+echo "Hello World!" > /var/www/html/index.html
