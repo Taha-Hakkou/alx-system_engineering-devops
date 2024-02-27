@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Configures Nginx server so that /redirect_me is redirecting to another page
-apt-get update
-apt-get install nginx -y
+apt-get -y update
+apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
 redirect="http {\n
 	server {\n
@@ -12,4 +12,4 @@ redirect="http {\n
 		}\n
 	}"
 sed -i "s/http {/$redirect/" /etc/nginx/nginx.conf
-nginx -s reload
+service nginx start
