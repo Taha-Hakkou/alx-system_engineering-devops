@@ -2,5 +2,5 @@
 # configures a new Ubuntu machine with Nginx listening on port 80
 apt-get -y update && apt-get -y upgrade
 apt-get -y install nginx
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.html
 service nginx start
