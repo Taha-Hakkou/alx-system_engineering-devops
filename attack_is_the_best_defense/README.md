@@ -5,9 +5,9 @@ Network security Optional Project
 ## Tasks:
 
 (0. ARP spoofing and sniffing unencrypted traffic)
-sudo tcpdump dst smtp.sendgrid.net and port 587 -Aq > output.txt
+sudo tcpdump port 587 -Aq > output.txt
 cat output.txt | tr '\n' ' ' | sed 's/\s\s/\n/g' | rev | cut -d '.' -f1 | rev | tr -s '\n'
-
+echo "bXlwYXNzd29yZDk4OTgh" | base64 -d > 0-sniffing
 ================================================================================
 
 (1. Dictionary attack)
