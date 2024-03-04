@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# configures a brand new Ubuntu machine with custom HTTP response header (X-Served-By)
+apt-get -y update && apt-get -y upgrade
+apt-get -y install nginx
+echo "Hello World!" > /var/www/html/index.html
+header="server_name _;\n\tadd_header X-Served-By \$hostname;"
+sed -i "s/server_name _;/$header/" /etc/nginx/sites-available/default
+service nginx restart
