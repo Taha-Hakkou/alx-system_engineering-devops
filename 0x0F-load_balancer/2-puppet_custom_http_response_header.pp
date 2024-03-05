@@ -8,12 +8,15 @@ package { 'nginx':
   provider => 'apt',
 }
 
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+}
+
 exec {'header':
   command  => 'sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-available/default',
   provider => 'shell',
 }
 
-exec {'restart':
-  command  => 'service nginx restart',
-  provider => 'shell',
+service {'nginx':
+  ensure => 'running',
 }
