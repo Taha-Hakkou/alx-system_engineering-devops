@@ -1,6 +1,7 @@
 # installs and configures an HAProxy server with custom "X-Served-By" HTTP header
 exec { 'update_packages':
-  command => 'apt -y update && apt -y upgrade',
+  command  => 'apt -y update && apt -y upgrade',
+  provider => 'shell',
 }
 
 package { 'nginx':
