@@ -19,5 +19,6 @@ exec {'header':
 }
 
 exec {'restart':
-  command => '/usr/sbin/service nginx restart',
+  command  => 'service nginx restart',
+  provider => 'shell',
 }
