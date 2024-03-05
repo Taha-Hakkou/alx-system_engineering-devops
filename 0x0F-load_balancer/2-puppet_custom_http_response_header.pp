@@ -14,5 +14,5 @@ exec {'header':
 }
 
 service {'nginx':
-  restart => '/usr/sbin/service nginx restart',
+  ensure => 'running',
 }
