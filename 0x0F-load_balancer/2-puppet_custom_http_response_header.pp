@@ -18,5 +18,5 @@ exec {'header':
 }
 
 service {'nginx':
-  ensure => 'running',
+  ensure => running,
 }
