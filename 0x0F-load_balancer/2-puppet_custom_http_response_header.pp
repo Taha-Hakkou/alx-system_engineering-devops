@@ -9,9 +9,10 @@ package { 'nginx':
 }
 
 exec {'header':
-  command  => '/usr/bin/sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-available/default',
+  command  => 'sed -i "s/server_name _;/server_name _;\n\tadd_header X-Served-By \$hostname;/" /etc/nginx/sites-available/default',
+  provider => 'shell',
 }
 
-exec {'restart':
-  command => '/usr/sbin/service nginx restart',
+service {'nginx':
+  restart => '/usr/sbin/service nginx restart',
 }
