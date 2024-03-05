@@ -13,6 +13,7 @@ exec {'header':
   provider => 'shell',
 }
 
-service {'nginx':
-  ensure => 'running',
+exec {'restart':
+  command  => 'service nginx restart',
+  provider => 'shell',
 }
