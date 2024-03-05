@@ -18,6 +18,6 @@ exec {'header':
   provider => 'shell',
 }
 
-service {'nginx':
-  ensure => running,
+exec {'restart':
+  command => '/usr/sbin/service nginx restart',
 }
