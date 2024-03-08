@@ -1,7 +1,17 @@
 #!/usr/bin/env bash
-# displays domain properties!!!
+# displays domain information using the domain & the subdomain
 DOMAIN="$1"
 SUB_DOMAIN="$2"
-RECORD_TYPE="$(dig '$(SUB_DOMAIN).$(DOMAIN)' | grep '^$(SUB_DOMAIN)' | rev | cut -d$'\t' -f2)"
-DESTINATION="$(dig '$(SUB_DOMAIN).$(DOMAIN)' | grep '^$(SUB_DOMAIN)' | rev | cut -d$'\t' -f1)"
-echo "The subdomain $SUB_DOMAIN is a $RECORD_TYPE record and points to $DESTINATION"
+
+function output() {
+	dig "$1" | grep -A1 'ANSWER SECTION:' | sed -r "s/$1./$2/g" | awk -F" " ' NR==2 { print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
+}
+
+if [ $# -eq 2 ]; then
+	output "$SUB_DOMAIN.$DOMAIN" "$SUB_DOMAIN"
+else
+	output www."$DOMAIN" www
+	output lb-01."$DOMAIN" lb-01
+	output web-01."$DOMAIN" web-01
+	output web-02."$DOMAIN" web-02
+fi
