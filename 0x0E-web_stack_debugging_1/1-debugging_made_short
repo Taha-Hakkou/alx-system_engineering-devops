@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# configures (fixes) an nginx web server to be listening on port 80
+apt install nginx
+service nginx start
