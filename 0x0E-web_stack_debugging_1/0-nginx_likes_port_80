@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # configures (fixes) an nginx web server to be listening on port 80
-apt install nginx
-service nginx start
+sed -i "s/8080/80/" /etc/nginx/sites-enabled/default
+service nginx restart
