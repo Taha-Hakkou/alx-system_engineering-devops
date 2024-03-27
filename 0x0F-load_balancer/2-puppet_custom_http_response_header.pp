@@ -1,12 +1,10 @@
 # installs and configures an HAProxy server with custom "X-Served-By" HTTP header
 exec { 'update_packages':
-  command  => 'apt -y update && apt -y upgrade',
-  provider => 'shell',
+  command  => '/usr/bin/apt -y update && /usr/bin/apt -y upgrade'
 }
 
 package { 'nginx':
-  ensure   => installed,
-  provider => 'apt',
+  ensure => installed,
 }
 
 file { '/var/www/html/index.html':
@@ -18,7 +16,6 @@ exec {'header':
   provider => 'shell',
 }
 
-exec {'restart':
-  command  => 'service nginx restart',
-  provider => 'shell',
+service {'nginx':
+  ensure  => running
 }
