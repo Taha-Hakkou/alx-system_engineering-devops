@@ -10,7 +10,8 @@ def top_ten(subreddit):
         print(None)
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     response = requests.get(url, params={'limit': '10'},
-                            headers={'User-Agent': 'MyAPI/0.0.1'})
+                            headers={'User-Agent': 'MyAPI/0.0.1'},
+                            allow_redirects=False)
     posts = response.json().get('data', {}).get('children', [])
     if posts == []:
         print(None)
