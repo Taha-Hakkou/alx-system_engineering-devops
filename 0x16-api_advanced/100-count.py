@@ -7,11 +7,13 @@ def count_words(subreddit, word_list, after=None, word_count={}):
     """parses the title of all hot articles,
     and prints a sorted count of given keywords"""
     """if subreddit is None or not isinstance(subreddit, str):
-        return (None)
+        return (None)"""
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
     response = requests.get(url, params={'after': after},
                             headers={'User-Agent': 'MyAPI/0.0.1'},
                             allow_redirects=False)
+    if response.status_code != 200:
+        return None
     posts = response.json().get('data', {}).get('children', [])
     titles = [post.get('data').get('title') for post in posts]
     for title in titles:
@@ -29,8 +31,8 @@ def count_words(subreddit, word_list, after=None, word_count={}):
         return
     count = sorted(count, key=lambda x: x)
     for c in sorted(count, key=lambda x: count[x], reverse=True):
-        print(f'{c}: {count.get(c)}')"""
-    sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
+        print(f'{c}: {count.get(c)}')
+    """sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
                             .format(subreddit),
                             params={"after": after},
                             headers={"User-Agent": "My-User-Agent"},
@@ -66,4 +68,4 @@ def count_words(subreddit, word_list, after=None, word_count={}):
         [print('{}: {}'.format(k, v)) for k, v in sorted_counts if v != 0]
     else:
         return count_words(subreddit, word_list, word_count,
-                           info.get("data").get("after"))
+                           info.get("data").get("after"))"""
