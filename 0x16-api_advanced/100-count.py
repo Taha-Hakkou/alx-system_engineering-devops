@@ -26,4 +26,5 @@ def count_words(subreddit, word_list, after='', count={}):
     if after:
         count = count_words(subreddit, word_list, after, count)
         return
-    print(count)
+    for c in sorted(count, key=lambda x: count[x], reverse=True):
+        print(f'{c}: {count.get(c)}')
