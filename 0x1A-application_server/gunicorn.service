@@ -1,0 +1,11 @@
+[Unit]
+Description=HBNB Gunicorn Service
+
+[Service]
+ExecStart=/usr/local/bin/gunicorn --workers=3 --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app
+StandardOutput=/tmp/airbnb-access.log
+StandardError=/tmp/airbnb-error.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
