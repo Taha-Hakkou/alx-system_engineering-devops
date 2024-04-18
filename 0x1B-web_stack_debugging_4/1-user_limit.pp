@@ -1,3 +1,4 @@
+# 1-user_limit.pp
 exec {'change op hard limits':
   command  => 'sed -i "s/holberton hard nofile 5/holberton hard nofile 1024/" /etc/security/limits.conf',
   provider => 'shell'
