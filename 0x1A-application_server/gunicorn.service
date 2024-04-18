@@ -4,9 +4,8 @@ Description=HBNB Gunicorn Service
 [Service]
 WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
 ExecStart=/usr/local/bin/gunicorn --workers=3 --bind 0.0.0.0:5003 web_dynamic.2-hbnb:app
-StandardOutput=/tmp/airbnb-access.log
-StandardError=/tmp/airbnb-error.log
-Restart=always
+StandardOutput=file:/tmp/airbnb-access.log
+StandardError=file:/tmp/airbnb-error.log
 
 [Install]
 WantedBy=multi-user.target
